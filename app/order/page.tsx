@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import mattress from "../../assets/mattress.jpg"
-import mattress2 from "../../assets/mattress2.jpg"
-
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+
+import mattress from "../../assets/mattress.jpg"
+import mattress2 from "../../assets/mattress2.jpg"
+import mattress3 from "../../assets/mattress3.jpg"
 
 export default function OrderPage() {
   return (
@@ -15,12 +16,12 @@ export default function OrderPage() {
           <Image src={mattress} className="w-full mb-4 border-2 rounded-lg" alt="" />
           <div className="flex flex-row items-center justify-between w-full">
             <Image src={mattress2} className="w-[calc(50%-0.5rem)] border-2 rounded-lg" alt="" />
-            <Image src={mattress2} className="w-[calc(50%-0.5rem)] border-2 rounded-lg" alt="" />
+            <Image src={mattress3} className="w-[calc(50%-0.5rem)] border-2 rounded-lg" alt="" />
           </div>
         </div>
         <div className="w-full pl-4">
           <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">Scholar Snooze Package</h2>
-          <p className="leading-7 [&:not(:first-child)]:mt-6">Scholar Snooze's signature mattress combines the supportive, moldable feel of gel memory foam with innersprings for optimal comfort to you.</p>
+          <p className="leading-7 [&:not(:first-child)]:mt-6">Scholar Snooze&apos;s signature mattress combines the supportive, moldable feel of gel memory foam with innersprings for optimal comfort to you.</p>
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Customize Your Bed</h4>
           <Table>
