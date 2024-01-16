@@ -20,42 +20,33 @@ export default function Home() {
           <Card className="w-[350px] mr-4 ">
             <CardHeader>
               <CardTitle className="flex items-center">1-Year Term </CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for the entire school year.</CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for the entire school year. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
-            <CardFooter className="flex justify-center">
-              <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$44.99/mo</h2>
-            </CardFooter>
           </Card>
         </Link>
         <Link href="/order" className="inline-block">
           <Card className="w-[350px] ml-4">
             <CardHeader>
               <CardTitle className="flex items-center">2-Year Term</CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for two years at a lower price.</CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for two years at a lower price. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
-            <CardFooter className="flex justify-center">
-              <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$42.99/mo</h2>
-            </CardFooter>
           </Card>
         </Link>
         <Link href="/order" className="inline-block">
           <Card className="w-[350px] ml-4">
             <CardHeader>
               <CardTitle className="flex items-center">3-Year Term </CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for three years at the lowest price.</CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for three years at the lowest price. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
-            <CardFooter className="flex justify-center">
-              <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$39.99/mo</h2>
-            </CardFooter>
           </Card>
         </Link>
       </div>
