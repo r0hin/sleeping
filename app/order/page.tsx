@@ -7,10 +7,13 @@ import { Button } from "@/components/ui/button";
 import mattress from "../../assets/mattress.jpg"
 import mattress2 from "../../assets/mattress2.jpg"
 import mattress3 from "../../assets/mattress3.jpg"
+import { Clock } from "lucide-react";
 
 export default function OrderPage() {
   return (
     <>
+      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">The Scholar Snooze Package</h2>
+      <br></br>
       <div className="flex flex-row items-start justify-between">
         <div className="w-full pr-4">
           <Image src={mattress} className="w-full mb-4 border-2 rounded-lg" alt="" />
@@ -20,10 +23,9 @@ export default function OrderPage() {
           </div>
         </div>
         <div className="w-full pl-4">
-          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">Scholar Snooze Package</h2>
-          <p className="leading-7 [&:not(:first-child)]:mt-6">Scholar Snooze&apos;s signature mattress combines the supportive, moldable feel of gel memory foam with innersprings for optimal comfort to you.</p>
+          <p className="leading-7 [&:not(:first-child)]:mt-6">Our beds combine the supportive, moldable feel of gel memory foam with innersprings for optimal sleeping comfort.</p>
 
-          <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Customize Your Bed</h4>
+          <h4 className="scroll-m-20 mb-0 mt-4 text-xl font-semibold tracking-tight">Customize Your Bed</h4>
           <Table>
             <TableHeader>
               <TableRow>
@@ -61,7 +63,7 @@ export default function OrderPage() {
             </TableBody>
           </Table>
 
-          <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Purchase Plan</h4>
+          <h4 className="scroll-m-20 mb-0 mt-4 text-xl font-semibold tracking-tight">Purchase Plan</h4>
           <Table>
             <TableHeader>
               <TableRow>
@@ -97,18 +99,20 @@ export default function OrderPage() {
               </TableRow>
             </TableBody>
           </Table>
+          
+          <h4 className="scroll-m-20 mb-2 mt-4 text-xl font-semibold tracking-tight">Delivery Date</h4>
+          <Select defaultValue="may">
+            <SelectTrigger>
+              <SelectValue/>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="may">Week of May 1</SelectItem>
+              <SelectItem value="aug">Week of Aug 31</SelectItem>
+              <SelectItem value="custom">Custom (+$9.99)</SelectItem>
+            </SelectContent>
+          </Select>
 
-          <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Order</h4>
-          <div className="items-top mt-2 flex space-x-2">
-            <Checkbox id="terms" />
-            <div className="grid gap-1.5 leading-none">
-              <label htmlFor="terms" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                I agree to the <a href="#" className="text-muted-foreground">Terms of Service</a> and <a href="#" className="text-muted-foreground">Privacy Policy</a>.
-              </label>
-            </div>
-          </div>
-
-          <Button className="mt-6 w-full">Checkout ($29.99/mo)</Button>
+          <Button className="w-full mt-11">Checkout ($29.99/mo)</Button>
         </div>
       </div>
     </>
