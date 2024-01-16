@@ -6,14 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const pathname = usePathname()
-  console.log(pathname)
+  const pathname = usePathname();
 
   return (
     <div className="py-4 px-8 max-w-4xl ml-auto mr-auto border-black border-b flex flex-row justify-between items-center">
       <div className="min-w-48">
         <Link href={"/"}>
-          <Button variant={"link"} className={`${pathname == "/" ? "font-bold" : ""}`}>Home</Button>
+          <Button variant={"link"} className={`${pathname == "/" ? "font-bold" : ""} pl-0`}>Home</Button>
         </Link>
         <Link href={"/about"}>
           <Button variant={"link"} className={`${pathname == "/about" ? "font-bold" : ""}`}>About</Button>

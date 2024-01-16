@@ -2,6 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import styles from "./Home.module.css";
 import Link from "next/link";
+import Image from "next/image";
+
+import mattress from "../assets/mattress.jpg"
 
 export default function Home() {
   return (
@@ -20,7 +23,7 @@ export default function Home() {
               <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for the entire school year.</CardDescription>
             </CardHeader>
             <CardContent>
-              (product image)
+              <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
             <CardFooter className="flex justify-center">
               <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$44.99/mo</h2>
@@ -34,7 +37,7 @@ export default function Home() {
               <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for two years at a lower price.</CardDescription>
             </CardHeader>
             <CardContent>
-              (product image)
+              <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
             <CardFooter className="flex justify-center">
               <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$42.99/mo</h2>
@@ -48,7 +51,7 @@ export default function Home() {
               <CardDescription className="whitespace-normal">Rent an unused, high-quality bed for three years at the lowest price.</CardDescription>
             </CardHeader>
             <CardContent>
-              (product image)
+              <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
             </CardContent>
             <CardFooter className="flex justify-center">
               <h2 className="scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">$39.99/mo</h2>
