@@ -352,8 +352,9 @@ export default function OrderPage() {
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}, ${totalForever} across full term.</p>
-
+          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}{payment == "upfront" && (`, $${totalForever} across full term.`)}</p>
+          <br />
+          <p className="text-sm mt-2 text-muted-foreground">All values displayed in CA$.</p>
         </div>
       </div>
     </>
