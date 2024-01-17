@@ -106,13 +106,13 @@ export default function OrderPage() {
               <SelectValue/>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="may">Week of May 1</SelectItem>
-              <SelectItem value="aug">Week of Aug 31</SelectItem>
-              <SelectItem value="custom">Custom (+$9.99)</SelectItem>
+              <SelectItem value="may">First week of May</SelectItem>
+              <SelectItem value="aug">Last week of August</SelectItem>
+              <SelectItem value="custom">Pick my own date (+$14.99)</SelectItem>
             </SelectContent>
           </Select>
 
-          <Button className="w-full mt-11">Checkout ($29.99/mo)</Button>
+          <Button className="w-full mt-11">Checkout ($29.99)</Button>
         </div>
       </div>
     </>
