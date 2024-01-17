@@ -20,7 +20,7 @@ export default function Home() {
           <Card className="w-[350px] mr-4 ">
             <CardHeader>
               <CardTitle className="flex items-center">1-Year Term </CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for the entire school year. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for the entire school year. Starts at just <span className="font-mono">$26.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
@@ -31,7 +31,7 @@ export default function Home() {
           <Card className="w-[350px] ml-4">
             <CardHeader>
               <CardTitle className="flex items-center">2-Year Term</CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for two years at a lower price. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for two years at a lower price. Starts at just <span className="font-mono">$24.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
@@ -42,7 +42,7 @@ export default function Home() {
           <Card className="w-[350px] ml-4">
             <CardHeader>
               <CardTitle className="flex items-center">3-Year Term </CardTitle>
-              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for three years at the lowest price. Starts at just <span className="font-mono">$19.99/mo</span></CardDescription>
+              <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for three years at the lowest price. Starts at just <span className="font-mono">$22.99/mo</span></CardDescription>
             </CardHeader>
             <CardContent>
               <Image src={mattress} className="rounded-lg" alt="" width={350} height={350} />
