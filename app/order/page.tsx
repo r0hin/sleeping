@@ -20,9 +20,10 @@ import { cn } from "@/lib/utils";
 export default function OrderPage() {
   const [totalMo, setTotalMo] = useState(0);
   const [totalToday, setTotalToday] = useState(0);
+  const [totalForever, setTotalForever] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const [size, setSize] = useState<"king" | "queen" | "full" | "twin">("king");
+  const [size, setSize] = useState<"king" | "queen" | "full" | "twin">("queen");
   const [frame, setFrame] = useState<"basic" | "sleek" | "no">("sleek");
   const [term, setTerm] = useState<"yr1" | "yr2" | "yr3">("yr3");
   const [payment, setPayment] = useState<"upfront" | "monthly">("upfront");
@@ -217,6 +218,10 @@ export default function OrderPage() {
 
     setTotalMo(totalMattress + totalFrame - 0.01);
     setTotalToday(totalMattress + totalFrame + totalDelivery - 0.01);
+    if (payment == "upfront") {
+      setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
+
+    }
   }
   
   useEffect(() => {
@@ -347,7 +352,7 @@ export default function OrderPage() {
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}</p>
+          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}, ${totalForever} across full term.</p>
 
         </div>
       </div>
