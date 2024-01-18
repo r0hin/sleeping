@@ -40,7 +40,8 @@ export async function POST(request: Request) {
       delivery: customization.delivery,
       totalMo: totals.totalMo,
       totalToday: totals.totalToday,
-      totalForever: totals.totalForever
+      totalForever: totals.totalForever,
+      password: "30nn"
     }
   })
 
