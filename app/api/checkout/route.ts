@@ -30,6 +30,7 @@ export async function POST(request: Request) {
       },
       quantity: 1,
     }],
+    customer_creation: "always",
     success_url: `https://scholarsnooze.com/order/success`,
     cancel_url: `https://scholarsnooze.com/order`,
     metadata: {
