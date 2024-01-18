@@ -24,6 +24,7 @@
     "react": "^18",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
+    "sharp": "^0.33.2",
     "stripe": "^14.12.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"
