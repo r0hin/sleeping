@@ -17,8 +17,8 @@ export async function POST(request: Request) {
 
   await resend.emails.send({
     from: 'Scholar Snooze <purchases@scholarsnooze.com>',
-    // to: ['me@r0h.in', 'jacksdorr@gmail.com'],
-    to: ['me@r0h.in'],
+    to: ['me@r0h.in', 'jacksdorr@gmail.com'],
+    // to: ['me@r0h.in'],
     subject: 'NEW MONEY BABY!',
     html: `<h1>🗿 New Order </h1><br>${details}`
   });

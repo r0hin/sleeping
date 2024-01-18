@@ -31,8 +31,8 @@ export async function POST(request: Request) {
           description: `The product is delivered as a rental for ${customization.term.slice(2)} years. ${customization.payment == "monthly" ? `Monthly payments of $${totals.totalMo} will be made for the duration of the rental.` : "The entire rental cost will be paid upfront."}`,
         },
         // unit_amount: Math.round(totals.totalToday * 100)
-        unit_amount: 80
-        // unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalToday * 100)
+        // unit_amount: 80
+        unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalToday * 100)
       },
       quantity: 1,
     }, {
