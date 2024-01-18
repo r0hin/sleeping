@@ -34,9 +34,18 @@ export async function POST(request: Request) {
         // unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalToday * 100)
       },
       quantity: 1,
+    }, {
+      price_data: {
+        currency: "cad",
+        product_data: {
+          name: "Delivery",
+          description: "Delivery of your mattress and frame.",
+        },
+        unit_amount: customization.payment == "monthly" ? Math.round((totals.totalToday - totals.totalMo) * 100) : 0
+      },
+      quantity: 1,
     }],
     payment_method_collection: "always",
-    customer_creation: "always",
     success_url: `https://scholarsnooze.com/order/success`,
     cancel_url: `https://scholarsnooze.com/order`,
     metadata: {
