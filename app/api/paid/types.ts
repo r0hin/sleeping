@@ -45,7 +45,7 @@ export interface StripeEvent {
         tax_exempt: string,
         tax_ids: []
       },
-      customer_email: null,
+      customer_email: string,
       expires_at: number,
       invoice: null,
       invoice_creation: {
