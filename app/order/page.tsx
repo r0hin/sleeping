@@ -50,7 +50,7 @@ export default function OrderPage() {
 
     const { url } = await request.json();
 
-    console.log(url)
+    window.location.replace(url);
   }
 
   const calculateTotal = () => {

@@ -25,7 +25,8 @@ export async function POST(request: Request) {
           name: customization.frame == "no" ? "Scholar Snooze Mattress" : "Scholar Snooze Mattress + Frame",
           description: `The product is delivered as a rental for ${customization.term.slice(2)} years. ${customization.payment == "monthly" ? `Monthly payments of $${totals.totalMo} will be made for the duration of the rental.` : "The entire rental cost will be paid upfront."}`,
         },
-        unit_amount: totals.totalToday * 100,
+        // unit_amount: Math.round(totals.totalToday * 100)
+        unit_amount: 80
       },
       quantity: 1,
     }],
