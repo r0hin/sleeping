@@ -25,7 +25,7 @@ export async function POST(request: Request) {
           name: customization.frame == "no" ? "Scholar Snooze Mattress" : "Scholar Snooze Mattress + Frame",
           description: `The product is delivered as a rental for ${customization.term.slice(2)} years. ${customization.payment == "monthly" ? `Monthly payments of $${totals.totalMo} will be made for the duration of the rental.` : "The entire rental cost will be paid upfront."}`,
         },
-        unit_amount: 1,
+        unit_amount: totals.totalToday * 100,
       },
       quantity: 1,
     }],
@@ -236,6 +236,10 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
   totalMo = totalMattress + totalFrame - 0.01;
   totalToday = totalMattress + totalFrame + totalDelivery - 0.01;
   totalForever = (parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01;
+
+  if (payment === "upfront") {
+    totalToday = totalForever
+  }
 
   return {
     totalMo,
