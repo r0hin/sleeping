@@ -17,11 +17,10 @@ export async function POST(request: Request) {
 
   const totals = calculateTotal(customization.size, customization.frame, customization.term, customization.payment, customization.delivery);
 
-  const session = await client.checkout.sessions.create({
+  const sessionData = {
     mode: customization.payment == "monthly" ? "subscription" : "payment",
     line_items: [{
       price_data: {
-        ...customization.payment == "monthly" ? { recurring: { interval: "month" } } : {},
         currency: "cad",
         product_data: {
           name: customization.frame == "no" ? "Scholar Snooze Mattress" : "Scholar Snooze Mattress + Frame",
@@ -43,7 +42,7 @@ export async function POST(request: Request) {
       },
       quantity: 1,
     }],
-    payment_method_collection: "always",
+    ...customization.payment == "monthly" ? { payment_method_collection: "always" } : {},
     success_url: `https://scholarsnooze.com/order/success`,
     cancel_url: `https://scholarsnooze.com/order`,
     metadata: {
@@ -58,7 +57,9 @@ export async function POST(request: Request) {
       totalForever: totals.totalForever,
       password: "30nn"
     }
-  })
+  }
+
+  const session = await client.checkout.sessions.create()
 
   const url = session.url;
   return new Response(JSON.stringify({ url }));
