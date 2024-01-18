@@ -27,11 +27,30 @@ export default function OrderPage() {
   const [frame, setFrame] = useState<"basic" | "sleek" | "no">("sleek");
   const [term, setTerm] = useState<"yr1" | "yr2" | "yr3">("yr3");
   const [payment, setPayment] = useState<"upfront" | "monthly">("upfront");
-  const [delivery, setDelivery] = useState("may");
+  const [delivery, setDelivery] = useState<"may" | "aug" | "custom">("may");
   const [date, setDate] = useState<Date>();
 
   const beginCheckout = async () => {
     setLoading(true);
+
+    const request = await fetch("scholarsnooze.com/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({
+        size,
+        frame,
+        term,
+        payment,
+        delivery,
+        date
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const { url } = await request.json();
+
+    console.log(url)
   }
 
   const calculateTotal = () => {
@@ -218,10 +237,10 @@ export default function OrderPage() {
 
     setTotalMo(totalMattress + totalFrame - 0.01);
     setTotalToday(totalMattress + totalFrame + totalDelivery - 0.01);
-    if (payment == "upfront") {
-      setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
-
+    if (payment === "upfront") {
+      setTotalToday((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
     }
+    setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
   }
   
   useEffect(() => {
@@ -352,7 +371,7 @@ export default function OrderPage() {
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}{payment == "upfront" && (`, $${totalForever} across full term.`)}</p>
+          <p className="text-sm mt-2 text-muted-foreground">Due today: ${totalToday}{payment !== "upfront" && (`, $${totalForever} across full term.`)}</p>
           <br />
           <p className="text-sm mt-2 text-muted-foreground">All values displayed in CA$.</p>
         </div>

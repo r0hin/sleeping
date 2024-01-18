@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <div className="py-4 px-8 max-w-4xl ml-auto mr-auto border-black border-b flex flex-row justify-between items-center">
-      <div className="min-w-48">
+      <div className="min-w-36">
         <Link href={"/"}>
           <Button variant={"link"} className={`${pathname == "/" ? "font-bold" : ""} pl-0`}>Home</Button>
         </Link>
@@ -21,7 +21,7 @@ export default function Header() {
       <div className="text-md font-bold font-mono">
         Scholar Snooze
       </div>
-      <div className="min-w-48 text-right">
+      <div className="min-w-36 text-right">
         <Link href={"/order"}>
           <Button disabled={pathname == "/order"} className="mr-2" variant="ghost" size="icon">
             <ShoppingBasket className="h-4 w-4" />
@@ -32,20 +32,6 @@ export default function Header() {
             <HelpCircle className="h-4 w-4" />
           </Button>
         </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <MoreVertical className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>More Options</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Policies</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuItem>Contact</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </div>
   )
