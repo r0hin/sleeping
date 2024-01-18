@@ -20,6 +20,10 @@ export async function POST(request: Request) {
     mode: customization.payment == "monthly" ? "subscription" : "payment",
     line_items: [{
       price_data: {
+        recurring: {
+          "interval": "month",
+          "interval_count": 1
+        },
         currency: "cad",
         product_data: {
           name: customization.frame == "no" ? "Scholar Snooze Mattress" : "Scholar Snooze Mattress + Frame",
@@ -27,6 +31,7 @@ export async function POST(request: Request) {
         },
         // unit_amount: Math.round(totals.totalToday * 100)
         unit_amount: 80
+        // unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalToday * 100)
       },
       quantity: 1,
     }],
