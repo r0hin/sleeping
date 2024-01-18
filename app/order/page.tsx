@@ -41,7 +41,7 @@ export default function OrderPage() {
         term,
         payment,
         delivery,
-        date
+        date: date ? date.toISOString() : ""
       }),
       headers: {
         "Content-Type": "application/json"

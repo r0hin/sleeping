@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     term: "yr1" | "yr2" | "yr3",
     payment: "upfront" | "monthly",
     delivery: "may" | "aug" | "custom",
+    date: string
   };
 
   const totals = calculateTotal(customization.size, customization.frame, customization.term, customization.payment, customization.delivery);
@@ -54,6 +55,7 @@ export async function POST(request: Request) {
       term: customization.term,
       payment: customization.payment,
       delivery: customization.delivery,
+      date: customization.date,
       totalMo: totals.totalMo,
       totalToday: totals.totalToday,
       totalForever: totals.totalForever,
