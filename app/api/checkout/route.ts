@@ -1,4 +1,4 @@
-export const runtime = 'nodejs'; // 'nodejs' is the default
+export const runtime = 'edge'; // 'nodejs' is the default
 export const dynamic = 'force-dynamic'; // static by default, unless reading the request
 
 import stripe from "stripe";
