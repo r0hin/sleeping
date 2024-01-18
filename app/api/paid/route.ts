@@ -10,11 +10,16 @@ export async function POST(request: Request) {
     return new Response("NOT OK");
   }
 
+  let details = ``;
+  for (const [key, value] of Object.entries(body.data.object.metadata)) {
+    details += `<b>${key}</b>: ${value}<br>`;
+  }
+
   await resend.emails.send({
     from: 'Scholar Snooze <purchases@scholarsnooze.com>',
     to: ['me@r0h.in'],
     subject: 'NEW MONEY BABY!',
-    text: `New order. ${JSON.stringify(body.data.object.metadata)}`,
+    html: `<h1>🗿 New Order </h1><br>${details}`
   });
 
   return new Response("OK");
