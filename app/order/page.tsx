@@ -33,7 +33,7 @@ export default function OrderPage() {
   const beginCheckout = async () => {
     setLoading(true);
 
-    const request = await fetch("scholarsnooze.com/api/checkout", {
+    const request = await fetch("https://scholarsnooze.com/api/checkout", {
       method: "POST",
       body: JSON.stringify({
         size,
