@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   const totals = calculateTotal(customization.size, customization.frame, customization.term, customization.payment, customization.delivery);
 
   const session = await client.checkout.sessions.create({
-    mode: "payment",
+    mode: customization.payment == "monthly" ? "subscription" : "payment",
     line_items: [{
       price_data: {
         currency: "cad",
@@ -30,6 +30,7 @@ export async function POST(request: Request) {
       },
       quantity: 1,
     }],
+    payment_method_collection: "always",
     customer_creation: "always",
     success_url: `https://scholarsnooze.com/order/success`,
     cancel_url: `https://scholarsnooze.com/order`,
