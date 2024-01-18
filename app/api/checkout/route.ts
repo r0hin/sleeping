@@ -4,7 +4,6 @@ export const dynamic = 'force-dynamic'; // static by default, unless reading the
 import stripe from "stripe";
 
 export async function POST(request: Request) {
-  console.log("Checkout!")
   const client = new stripe(process.env.STRIPE_KEY || "");
 
   const customization = await request.json() as {
