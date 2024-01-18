@@ -245,7 +245,7 @@ export default function OrderPage() {
   
   useEffect(() => {
     calculateTotal();
-  }, [size, frame, term, payment, delivery, date])
+  }, [size, frame, term, payment, delivery, date, calculateTotal])
 
   return (
     <>
