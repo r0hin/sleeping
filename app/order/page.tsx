@@ -19,14 +19,15 @@ import { cn } from "@/lib/utils";
 
 export default function OrderPage() {
   const [totalMo, setTotalMo] = useState(0);
-  const [totalToday, setTotalToday] = useState(0);
+  const [totalYr, setTotalYr] = useState(0);
+  const [totalDelivery, setTotalDelivery] = useState(0);
   const [totalForever, setTotalForever] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const [size, setSize] = useState<"king" | "queen" | "full" | "twin">("queen");
   const [frame, setFrame] = useState<"basic" | "sleek" | "no">("sleek");
   const [term, setTerm] = useState<"yr1" | "yr2" | "yr3">("yr3");
-  const [payment, setPayment] = useState<"upfront" | "monthly">("upfront");
+  const [payment, setPayment] = useState<"annual" | "monthly">("annual");
   const [delivery, setDelivery] = useState<"may" | "aug" | "custom">("may");
   const [date, setDate] = useState<Date>();
 
@@ -59,57 +60,57 @@ export default function OrderPage() {
         twin: {
           yr1: {
             monthly: 30,
-            upfront: 27
+            annual: 27
           },
           yr2: {
             monthly: 27,
-            upfront: 25
+            annual: 25
           },
           yr3: {
             monthly: 25,
-            upfront: 23
+            annual: 23
           }
         },
         full: {
           yr1: {
             monthly: 40,
-            upfront: 37
+            annual: 37
           },
           yr2: {
             monthly: 37,
-            upfront: 35
+            annual: 35
           },
           yr3: {
             monthly: 35,
-            upfront: 33
+            annual: 33
           }
         },
         queen: {
           yr1: {
             monthly: 47,
-            upfront: 45
+            annual: 45
           },
           yr2: {
             monthly: 44,
-            upfront: 42
+            annual: 42
           },
           yr3: {
             monthly: 40,
-            upfront: 37
+            annual: 37
           }
         },
         king: {
           yr1: {
             monthly: 70,
-            upfront: 65
+            annual: 65
           },
           yr2: {
             monthly: 65,
-            upfront: 60
+            annual: 60
           },
           yr3: {
             monthly: 60,
-            upfront: 55
+            annual: 55
           }
         }
       },
@@ -117,57 +118,57 @@ export default function OrderPage() {
         twin: {
           yr1: {
             monthly: 28,
-            upfront: 25
+            annual: 25
           },
           yr2: {
             monthly: 25,
-            upfront: 22
+            annual: 22
           },
           yr3: {
             monthly: 20,
-            upfront: 16
+            annual: 16
           }
         },
         full: {
           yr1: {
             monthly: 30,
-            upfront: 27
+            annual: 27
           },
           yr2: {
             monthly: 27,
-            upfront: 23
+            annual: 23
           },
           yr3: {
             monthly: 25,
-            upfront: 20
+            annual: 20
           }
         },
         queen: {
           yr1: {
             monthly: 36,
-            upfront: 28
+            annual: 28
           },
           yr2: {
             monthly: 33,
-            upfront: 25
+            annual: 25
           },
           yr3: {
             monthly: 30,
-            upfront: 23
+            annual: 23
           }
         },
         king: {
           yr1: {
             monthly: 40,
-            upfront: 34
+            annual: 34
           },
           yr2: {
             monthly: 37,
-            upfront: 30
+            annual: 30
           },
           yr3: {
             monthly: 35,
-            upfront: 27
+            annual: 27
           }
         }
       },
@@ -175,57 +176,57 @@ export default function OrderPage() {
         twin: {
           yr1: {
             monthly: 23,
-            upfront: 17
+            annual: 17
           },
           yr2: {
             monthly: 19,
-            upfront: 15
+            annual: 15
           },
           yr3: {
             monthly: 15,
-            upfront: 12
+            annual: 12
           }
         },
         full: {
           yr1: {
             monthly: 28,
-            upfront: 21
+            annual: 21
           },
           yr2: {
             monthly: 24,
-            upfront: 19
+            annual: 19
           },
           yr3: {
             monthly: 20,
-            upfront: 15
+            annual: 15
           }
         },
         queen: {
           yr1: {
             monthly: 33,
-            upfront: 25
+            annual: 25
           },
           yr2: {
             monthly: 29,
-            upfront: 24
+            annual: 24
           },
           yr3: {
             monthly: 25,
-            upfront: 20
+            annual: 20
           }
         },
         king: {
           yr1: {
             monthly: 34,
-            upfront: 26
+            annual: 26
           },
           yr2: {
             monthly: 30,
-            upfront: 25
+            annual: 25
           },
           yr3: {
             monthly: 26,
-            upfront: 21
+            annual: 21
           }
         }
       }
@@ -235,12 +236,10 @@ export default function OrderPage() {
     const totalFrame = frame === "no" ? 0 : matrix[frame][size][term][payment];
     const totalDelivery = delivery === "custom" ? 15 : 0;
 
-    setTotalMo(totalMattress + totalFrame - 0.01);
-    setTotalToday(totalMattress + totalFrame + totalDelivery - 0.01);
-    if (payment === "upfront") {
-      setTotalToday((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
-    }
-    setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01);
+    setTotalMo(totalMattress + totalFrame);
+    setTotalYr(12 * (totalMattress + totalFrame))
+    setTotalDelivery(totalDelivery);
+    setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery);
   }
   
   useEffect(() => {
@@ -329,13 +328,13 @@ export default function OrderPage() {
                   </Select>
                 </TableCell>
                 <TableCell>
-                  <Select onValueChange={(val) => { setPayment(val as "upfront" | "monthly") }} value={payment}>
+                  <Select onValueChange={(val) => { setPayment(val as "annual" | "monthly") }} value={payment}>
                     <SelectTrigger>
                       <SelectValue/>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="monthly">Monthly</SelectItem>
-                      <SelectItem value="upfront">Upfront (Best value)</SelectItem>
+                      <SelectItem value="annual">Annually (Best value)</SelectItem>
                     </SelectContent>
                   </Select>
                 </TableCell>
@@ -370,8 +369,8 @@ export default function OrderPage() {
           }
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
-          <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: CA${totalToday}{payment !== "upfront" && (`, CA$${totalForever} across full term.`)}</p>
+          <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo - 0.01}/mo)</Button>
+          <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}, CA${totalForever - 0.01} across full term</p>
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     size: "king" | "queen" | "full" | "twin",
     frame: "basic" | "sleek" | "no",
     term: "yr1" | "yr2" | "yr3",
-    payment: "upfront" | "monthly",
+    payment: "annual" | "monthly",
     delivery: "may" | "aug" | "custom",
     date: string
   };
@@ -18,28 +18,28 @@ export async function POST(request: Request) {
   const totals = calculateTotal(customization.size, customization.frame, customization.term, customization.payment, customization.delivery);
 
   const session = await client.checkout.sessions.create( {
-    mode: customization.payment == "monthly" ? "subscription" : "payment",
+    mode: "subscription",
     line_items: [{
       price_data: {
-        ...customization.payment == "monthly" ? { recurring: { interval: "month" } } : {},
+        ...customization.payment == "monthly" ? { recurring: { interval: "month" } } : { recurring: { interval: "year" }  },
         currency: "cad",
         product_data: {
           name: customization.frame == "no" ? "Scholar Snooze Mattress" : "Scholar Snooze Mattress + Frame",
-          description: `The product is delivered as a rental for ${customization.term.slice(2)} years. ${customization.payment == "monthly" ? `Monthly payments of $${totals.totalMo} will be made for the duration of the rental.` : "The entire rental cost will be paid upfront."}`,
+          description: `The product is delivered as a rental for ${customization.term.slice(2)} years. ${customization.payment == "monthly" ? `Monthly payments of $${totals.totalMo} will be made for the duration of the rental. The subscription will end automatically after ${customization.term.slice(2)} years.` : `Annual payments of $${totals.totalYear} will be made for the duration of the rental. The subscription will end automatically after ${customization.term.slice(2)} years.`}`,
         },
         // unit_amount: Math.round(totals.totalToday * 100)
         // unit_amount: 80
-        unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalToday * 100)
+        unit_amount: customization.payment == "monthly" ? Math.round(totals.totalMo * 100) : Math.round(totals.totalYear * 100)
       },
       quantity: 1,
     }, {
       price_data: {
         currency: "cad",
         product_data: {
-          name: "Delivery",
+          name: customization.delivery == "custom" ? "Custom Delivery" : customization.delivery == "may" ? "May Delivery" : "August Delivery",
           description: "Delivery of your mattress and frame.",
         },
-        unit_amount: customization.payment == "monthly" ? Math.round((totals.totalToday - totals.totalMo) * 100) : 0
+        unit_amount: Math.round(totals.totalDelivery * 100)
       },
       quantity: 1,
     }],
@@ -53,8 +53,7 @@ export async function POST(request: Request) {
       payment: customization.payment,
       delivery: customization.delivery,
       date: customization.date,
-      totalMo: totals.totalMo,
-      totalToday: totals.totalToday,
+      ...customization.payment == "monthly" ? { totalMo: totals.totalMo } : { totalYr: totals.totalYear },
       totalForever: totals.totalForever,
       password: "30nn"
     }
@@ -64,63 +63,63 @@ export async function POST(request: Request) {
   return new Response(JSON.stringify({ url }));
 }
 
-const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic" | "sleek" | "no", term: "yr1" | "yr2" | "yr3", payment: "upfront" | "monthly", delivery: "may" | "aug" | "custom") => {
+const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic" | "sleek" | "no", term: "yr1" | "yr2" | "yr3", payment: "annual" | "monthly", delivery: "may" | "aug" | "custom") => {
   const matrix = {
     mattress: {
       twin: {
         yr1: {
           monthly: 30,
-          upfront: 27
+          annual: 27
         },
         yr2: {
           monthly: 27,
-          upfront: 25
+          annual: 25
         },
         yr3: {
           monthly: 25,
-          upfront: 23
+          annual: 23
         }
       },
       full: {
         yr1: {
           monthly: 40,
-          upfront: 37
+          annual: 37
         },
         yr2: {
           monthly: 37,
-          upfront: 35
+          annual: 35
         },
         yr3: {
           monthly: 35,
-          upfront: 33
+          annual: 33
         }
       },
       queen: {
         yr1: {
           monthly: 47,
-          upfront: 45
+          annual: 45
         },
         yr2: {
           monthly: 44,
-          upfront: 42
+          annual: 42
         },
         yr3: {
           monthly: 40,
-          upfront: 37
+          annual: 37
         }
       },
       king: {
         yr1: {
           monthly: 70,
-          upfront: 65
+          annual: 65
         },
         yr2: {
           monthly: 65,
-          upfront: 60
+          annual: 60
         },
         yr3: {
           monthly: 60,
-          upfront: 55
+          annual: 55
         }
       }
     },
@@ -128,57 +127,57 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
       twin: {
         yr1: {
           monthly: 28,
-          upfront: 25
+          annual: 25
         },
         yr2: {
           monthly: 25,
-          upfront: 22
+          annual: 22
         },
         yr3: {
           monthly: 20,
-          upfront: 16
+          annual: 16
         }
       },
       full: {
         yr1: {
           monthly: 30,
-          upfront: 27
+          annual: 27
         },
         yr2: {
           monthly: 27,
-          upfront: 23
+          annual: 23
         },
         yr3: {
           monthly: 25,
-          upfront: 20
+          annual: 20
         }
       },
       queen: {
         yr1: {
           monthly: 36,
-          upfront: 28
+          annual: 28
         },
         yr2: {
           monthly: 33,
-          upfront: 25
+          annual: 25
         },
         yr3: {
           monthly: 30,
-          upfront: 23
+          annual: 23
         }
       },
       king: {
         yr1: {
           monthly: 40,
-          upfront: 34
+          annual: 34
         },
         yr2: {
           monthly: 37,
-          upfront: 30
+          annual: 30
         },
         yr3: {
           monthly: 35,
-          upfront: 27
+          annual: 27
         }
       }
     },
@@ -186,57 +185,57 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
       twin: {
         yr1: {
           monthly: 23,
-          upfront: 17
+          annual: 17
         },
         yr2: {
           monthly: 19,
-          upfront: 15
+          annual: 15
         },
         yr3: {
           monthly: 15,
-          upfront: 12
+          annual: 12
         }
       },
       full: {
         yr1: {
           monthly: 28,
-          upfront: 21
+          annual: 21
         },
         yr2: {
           monthly: 24,
-          upfront: 19
+          annual: 19
         },
         yr3: {
           monthly: 20,
-          upfront: 15
+          annual: 15
         }
       },
       queen: {
         yr1: {
           monthly: 33,
-          upfront: 25
+          annual: 25
         },
         yr2: {
           monthly: 29,
-          upfront: 24
+          annual: 24
         },
         yr3: {
           monthly: 25,
-          upfront: 20
+          annual: 20
         }
       },
       king: {
         yr1: {
           monthly: 34,
-          upfront: 26
+          annual: 26
         },
         yr2: {
           monthly: 30,
-          upfront: 25
+          annual: 25
         },
         yr3: {
           monthly: 26,
-          upfront: 21
+          annual: 21
         }
       }
     }
@@ -247,20 +246,17 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
   const totalDelivery = delivery === "custom" ? 15 : 0;
 
   let totalMo = 0;
-  let totalToday = 0;
+  let totalYear = 0;
   let totalForever = 0;
 
   totalMo = totalMattress + totalFrame - 0.01;
-  totalToday = totalMattress + totalFrame + totalDelivery - 0.01;
+  totalYear = (12 * (totalMattress + totalFrame)) + totalDelivery - 0.01;
   totalForever = (parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery - 0.01;
-
-  if (payment === "upfront") {
-    totalToday = totalForever
-  }
 
   return {
     totalMo,
-    totalToday,
-    totalForever
+    totalYear,
+    totalForever,
+    totalDelivery
   }
 }
