@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
   const totals = calculateTotal(customization.size, customization.frame, customization.term, customization.payment, customization.delivery);
 
-  const sessionData = {
+  const session = await client.checkout.sessions.create( {
     mode: customization.payment == "monthly" ? "subscription" : "payment",
     line_items: [{
       price_data: {
@@ -57,9 +57,7 @@ export async function POST(request: Request) {
       totalForever: totals.totalForever,
       password: "30nn"
     }
-  }
-
-  const session = await client.checkout.sessions.create()
+  })
 
   const url = session.url;
   return new Response(JSON.stringify({ url }));
