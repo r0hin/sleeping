@@ -6,7 +6,10 @@ import { Resend } from 'resend';
 export async function POST(request: Request) {
   const body = await request.json() as StripeEvent;
   const resend = new Resend(process.env.RESEND_KEY || "");
+  console.log(body)
+  console.log(body.data.object.metadata)
   if (body.data.object.metadata.password !== "30nn") {
+    console.log("Wrong password")
     return new Response("OK");
   }
 
@@ -16,6 +19,8 @@ export async function POST(request: Request) {
     subject: 'NEW MONEY BABY!',
     text: `New order. ${JSON.stringify(body.data.object.metadata)}`,
   });
+
+  console.log("Email sent?")
 
   return new Response("OK");
 }
