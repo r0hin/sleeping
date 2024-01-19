@@ -27,7 +27,7 @@ export default function Header() {
             <ShoppingBasket className="h-4 w-4" />
           </Button>
         </Link>
-        <Link href={"/help"}>
+        <Link href={"mailto:support@scholarsnooze.com"}>
           <Button disabled={pathname == "/help"} className="mr-2" variant="ghost" size="icon">
             <HelpCircle className="h-4 w-4" />
           </Button>
