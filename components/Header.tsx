@@ -1,9 +1,11 @@
 "use client"
-import { HelpCircle, MoreVertical, ShoppingBasket } from "lucide-react";
+import { HelpCircle, ShoppingBasket } from "lucide-react";
 import { Button } from "./ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import logo from "../assets/logo.png"
+import Image from "next/image";
 
 export default function Header() {
   const pathname = usePathname();
@@ -21,7 +23,8 @@ export default function Header() {
           <Button variant={"link"}>Contact</Button>
         </Link>
       </div>
-      <div className="text-md font-bold font-mono">
+      <div className="text-md font-bold font-mono flex flex-row items-center justify-center">
+        <Image src={logo} alt="" width={32} height={32} className="inline-block mr-2 rounded-lg" />
         Scholar Snooze
       </div>
       <div className="min-w-36 text-right">

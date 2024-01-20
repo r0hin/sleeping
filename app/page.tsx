@@ -6,7 +6,8 @@ import Image from "next/image";
 
 import mattress1 from "../assets/mattress1.jpg"
 import mattress2 from "../assets/mattress2.jpg"
-import frame1 from "../assets/frame1.jpg"
+import truck from "../assets/truck.jpg"
+import handshake from "../assets/handshake.jpg"
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
 
       <div className="flex sm:flex-row flex-col justify-between items-start w-full shadow-md p-4 rounded-md">
         <div className="sm:w-1/2 w-full h-56">
-          <Image src={mattress1} className="rounded-sm shadow-xl h-full w-full object-cover" alt="" />
+          <Image src={handshake} className="rounded-md shadow-xl h-full w-full object-cover" alt="" />
         </div>
         <div className="sm:ml-6 sm:w-1/2 w-full sm:mt-0 mt-8">
           <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">Affordable, Luxury Beds</h2>
@@ -36,7 +37,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="sm:w-1/2 w-full h-56">
-          <Image src={frame1} className="rounded-sm shadow-xl h-full w-full object-cover" alt="" />
+          <Image src={truck} className="rounded-md shadow-xl h-full w-full object-cover" alt="" />
         </div>
       </div>
 
@@ -51,7 +52,7 @@ export default function Home() {
 
       <div className="w-full overflow-scroll whitespace-nowrap pb-8">
         <Link href="/order" className="inline-block">
-          <Card className="w-[350px] mr-4 ">
+          <Card className="w-[350px] mr-4 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center">1-Year Term</CardTitle>
               <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for the entire school year. Starts at just <span className="font-mono">$26.99/mo</span></CardDescription>
@@ -62,7 +63,7 @@ export default function Home() {
           </Card>
         </Link>
         <Link href="/order" className="inline-block">
-          <Card className="w-[350px] ml-4">
+          <Card className="w-[350px] ml-4 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center">2-Year Term</CardTitle>
               <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for two years at a lower price. Starts at just <span className="font-mono">$24.99/mo</span></CardDescription>
@@ -73,7 +74,7 @@ export default function Home() {
           </Card>
         </Link>
         <Link href="/order" className="inline-block">
-          <Card className="w-[350px] ml-4">
+          <Card className="w-[350px] ml-4 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center">3-Year Term </CardTitle>
               <CardDescription className="whitespace-normal">Rent an unused, high-quality mattress and frame for three years at the lowest price. Starts at just <span className="font-mono">$22.99/mo</span></CardDescription>
