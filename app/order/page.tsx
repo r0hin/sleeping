@@ -9,7 +9,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar as CalendarIcon } from "lucide-react"
 
-import mattress from "../../assets/mattress.jpg"
+import mattress1 from "../../assets/mattress1.jpg"
 import mattress2 from "../../assets/mattress2.jpg"
 import mattress3 from "../../assets/mattress3.jpg"
 import frame1 from "../../assets/frame1.jpg"
@@ -21,7 +21,6 @@ export default function OrderPage() {
   const [totalMo, setTotalMo] = useState(0);
   const [totalYr, setTotalYr] = useState(0);
   const [totalDelivery, setTotalDelivery] = useState(0);
-  const [totalForever, setTotalForever] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const [size, setSize] = useState<"king" | "queen" | "full" | "twin">("queen");
@@ -59,11 +58,11 @@ export default function OrderPage() {
       mattress: {
         twin: {
           yr1: {
-            monthly: 30,
-            annual: 27
+            monthly: 29,
+            annual: 26
           },
           yr2: {
-            monthly: 27,
+            monthly: 26,
             annual: 25
           },
           yr3: {
@@ -73,56 +72,56 @@ export default function OrderPage() {
         },
         full: {
           yr1: {
-            monthly: 40,
-            annual: 37
+            monthly: 38,
+            annual: 31
           },
           yr2: {
-            monthly: 37,
-            annual: 35
+            monthly: 34,
+            annual: 30
           },
           yr3: {
-            monthly: 35,
-            annual: 33
+            monthly: 33,
+            annual: 29
           }
         },
         queen: {
           yr1: {
-            monthly: 47,
-            annual: 45
+            monthly: 40,
+            annual: 33
           },
           yr2: {
-            monthly: 44,
-            annual: 42
+            monthly: 38,
+            annual: 32
           },
           yr3: {
-            monthly: 40,
-            annual: 37
+            monthly: 37,
+            annual: 31
           }
         },
         king: {
           yr1: {
-            monthly: 70,
-            annual: 65
+            monthly: 55,
+            annual: 45
           },
           yr2: {
-            monthly: 65,
-            annual: 60
+            monthly: 52,
+            annual: 44
           },
           yr3: {
-            monthly: 60,
-            annual: 55
+            monthly: 51,
+            annual: 43
           }
         }
       },
       sleek: {
         twin: {
           yr1: {
-            monthly: 28,
-            annual: 25
+            monthly: 24,
+            annual: 20
           },
           yr2: {
-            monthly: 25,
-            annual: 22
+            monthly: 21,
+            annual: 17
           },
           yr3: {
             monthly: 20,
@@ -131,70 +130,70 @@ export default function OrderPage() {
         },
         full: {
           yr1: {
-            monthly: 30,
+            monthly: 28,
             annual: 27
           },
           yr2: {
-            monthly: 27,
-            annual: 23
+            monthly: 26,
+            annual: 20
           },
           yr3: {
             monthly: 25,
-            annual: 20
+            annual: 19
           }
         },
         queen: {
           yr1: {
-            monthly: 36,
+            monthly: 30,
             annual: 28
           },
           yr2: {
-            monthly: 33,
-            annual: 25
+            monthly: 28,
+            annual: 23
           },
           yr3: {
-            monthly: 30,
-            annual: 23
+            monthly: 27,
+            annual: 22
           }
         },
         king: {
           yr1: {
-            monthly: 40,
+            monthly: 37,
             annual: 34
           },
           yr2: {
-            monthly: 37,
-            annual: 30
+            monthly: 35,
+            annual: 26
           },
           yr3: {
-            monthly: 35,
-            annual: 27
+            monthly: 34,
+            annual: 25
           }
         }
       },
       basic: {
         twin: {
           yr1: {
-            monthly: 23,
-            annual: 17
+            monthly: 18,
+            annual: 16
           },
           yr2: {
-            monthly: 19,
-            annual: 15
+            monthly: 16,
+            annual: 14
           },
           yr3: {
-            monthly: 15,
+            monthly: 14,
             annual: 12
           }
         },
         full: {
           yr1: {
-            monthly: 28,
-            annual: 21
+            monthly: 24,
+            annual: 22
           },
           yr2: {
-            monthly: 24,
-            annual: 19
+            monthly: 22,
+            annual: 17
           },
           yr3: {
             monthly: 20,
@@ -203,26 +202,26 @@ export default function OrderPage() {
         },
         queen: {
           yr1: {
-            monthly: 33,
-            annual: 25
+            monthly: 29,
+            annual: 23
           },
           yr2: {
-            monthly: 29,
-            annual: 24
+            monthly: 27,
+            annual: 21
           },
           yr3: {
             monthly: 25,
-            annual: 20
+            annual: 19
           }
         },
         king: {
           yr1: {
-            monthly: 34,
-            annual: 26
-          },
-          yr2: {
             monthly: 30,
             annual: 25
+          },
+          yr2: {
+            monthly: 28,
+            annual: 23
           },
           yr3: {
             monthly: 26,
@@ -239,7 +238,6 @@ export default function OrderPage() {
     setTotalMo(totalMattress + totalFrame);
     setTotalYr(12 * (totalMattress + totalFrame))
     setTotalDelivery(totalDelivery);
-    setTotalForever((parseInt(term.slice(2)) * 12 * (totalMattress + totalFrame)) + totalDelivery);
   }
   
   useEffect(() => {
@@ -250,7 +248,7 @@ export default function OrderPage() {
     <>
       <div className="flex flex-row items-start justify-between">
         <div className="w-full pr-4">
-          <Image src={mattress} className="w-full mb-2 border-2 rounded-lg" alt="" />
+          <Image src={mattress1} className="w-full mb-2 border-2 rounded-lg" alt="" />
           <p className="text-sm mb-2 text-muted-foreground">Mattress</p>
           <div className="flex flex-row items-center justify-between w-full">
             <Image src={mattress2} className="w-[calc(50%-0.25rem)] border-2 rounded-lg" alt="" />
@@ -297,7 +295,7 @@ export default function OrderPage() {
                     <SelectContent>
                       <SelectItem value="no">No Frame</SelectItem>
                       <SelectItem value="basic">Basic</SelectItem>
-                      <SelectItem value="sleek">Sleek</SelectItem>
+                      <SelectItem value="sleek">Sleek (+ headboard)</SelectItem>
                     </SelectContent>
                   </Select>
                 </TableCell>
@@ -370,7 +368,8 @@ export default function OrderPage() {
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo - 0.01}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}, CA${totalForever - 0.01} across full term</p>
+          <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}.</p>
+          {/* <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}, CA${totalForever - 0.01} across full term.</p> */}
         </div>
       </div>
     </>

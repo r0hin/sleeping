@@ -11,9 +11,6 @@ export default function Footer() {
           </Link>
         </div>
         <div>
-          <Link href={"mailto:support@scholarsnooze.com"}>
-            <Button variant={"link"}>Contact / Support</Button>
-          </Link>
           <Link href={"https://scholarsnooze.com/legal.pdf"}>
             <Button className="pr-0" variant={"link"}>Terms</Button>
           </Link>

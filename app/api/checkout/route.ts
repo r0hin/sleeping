@@ -68,11 +68,11 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
     mattress: {
       twin: {
         yr1: {
-          monthly: 30,
-          annual: 27
+          monthly: 29,
+          annual: 26
         },
         yr2: {
-          monthly: 27,
+          monthly: 26,
           annual: 25
         },
         yr3: {
@@ -82,56 +82,56 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
       },
       full: {
         yr1: {
-          monthly: 40,
-          annual: 37
+          monthly: 38,
+          annual: 31
         },
         yr2: {
-          monthly: 37,
-          annual: 35
+          monthly: 34,
+          annual: 30
         },
         yr3: {
-          monthly: 35,
-          annual: 33
+          monthly: 33,
+          annual: 29
         }
       },
       queen: {
         yr1: {
-          monthly: 47,
-          annual: 45
+          monthly: 40,
+          annual: 33
         },
         yr2: {
-          monthly: 44,
-          annual: 42
+          monthly: 38,
+          annual: 32
         },
         yr3: {
-          monthly: 40,
-          annual: 37
+          monthly: 37,
+          annual: 31
         }
       },
       king: {
         yr1: {
-          monthly: 70,
-          annual: 65
+          monthly: 55,
+          annual: 45
         },
         yr2: {
-          monthly: 65,
-          annual: 60
+          monthly: 52,
+          annual: 44
         },
         yr3: {
-          monthly: 60,
-          annual: 55
+          monthly: 51,
+          annual: 43
         }
       }
     },
     sleek: {
       twin: {
         yr1: {
-          monthly: 28,
-          annual: 25
+          monthly: 24,
+          annual: 20
         },
         yr2: {
-          monthly: 25,
-          annual: 22
+          monthly: 21,
+          annual: 17
         },
         yr3: {
           monthly: 20,
@@ -140,70 +140,70 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
       },
       full: {
         yr1: {
-          monthly: 30,
+          monthly: 28,
           annual: 27
         },
         yr2: {
-          monthly: 27,
-          annual: 23
+          monthly: 26,
+          annual: 20
         },
         yr3: {
           monthly: 25,
-          annual: 20
+          annual: 19
         }
       },
       queen: {
         yr1: {
-          monthly: 36,
+          monthly: 30,
           annual: 28
         },
         yr2: {
-          monthly: 33,
-          annual: 25
+          monthly: 28,
+          annual: 23
         },
         yr3: {
-          monthly: 30,
-          annual: 23
+          monthly: 27,
+          annual: 22
         }
       },
       king: {
         yr1: {
-          monthly: 40,
+          monthly: 37,
           annual: 34
         },
         yr2: {
-          monthly: 37,
-          annual: 30
+          monthly: 35,
+          annual: 26
         },
         yr3: {
-          monthly: 35,
-          annual: 27
+          monthly: 34,
+          annual: 25
         }
       }
     },
     basic: {
       twin: {
         yr1: {
-          monthly: 23,
-          annual: 17
+          monthly: 18,
+          annual: 16
         },
         yr2: {
-          monthly: 19,
-          annual: 15
+          monthly: 16,
+          annual: 14
         },
         yr3: {
-          monthly: 15,
+          monthly: 14,
           annual: 12
         }
       },
       full: {
         yr1: {
-          monthly: 28,
-          annual: 21
+          monthly: 24,
+          annual: 22
         },
         yr2: {
-          monthly: 24,
-          annual: 19
+          monthly: 22,
+          annual: 17
         },
         yr3: {
           monthly: 20,
@@ -212,26 +212,26 @@ const calculateTotal = (size: "king" | "queen" | "full" | "twin", frame: "basic"
       },
       queen: {
         yr1: {
-          monthly: 33,
-          annual: 25
+          monthly: 29,
+          annual: 23
         },
         yr2: {
-          monthly: 29,
-          annual: 24
+          monthly: 27,
+          annual: 21
         },
         yr3: {
           monthly: 25,
-          annual: 20
+          annual: 19
         }
       },
       king: {
         yr1: {
-          monthly: 34,
-          annual: 26
-        },
-        yr2: {
           monthly: 30,
           annual: 25
+        },
+        yr2: {
+          monthly: 28,
+          annual: 23
         },
         yr3: {
           monthly: 26,

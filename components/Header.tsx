@@ -17,6 +17,9 @@ export default function Header() {
         <Link href={"/about"}>
           <Button variant={"link"} className={`${pathname == "/about" ? "font-bold" : ""}`}>About</Button>
         </Link>
+        <Link href={"mailto:support@scholarsnooze.com"}>
+          <Button variant={"link"}>Contact</Button>
+        </Link>
       </div>
       <div className="text-md font-bold font-mono">
         Scholar Snooze
