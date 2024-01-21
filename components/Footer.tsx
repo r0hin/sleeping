@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="py-4 px-8 max-w-4xl ml-auto mr-auto border-black border-t flex flex-row justify-between items-center font-mono">
       <div className="flex flex-row justify-between items-center w-full">
         <div>
-          <Link href="">
+          <Link href="/">
             <Button className="pl-0" variant={"link"}>© Scholar Snooze, 2024.</Button>
           </Link>
         </div>

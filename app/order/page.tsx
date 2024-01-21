@@ -49,7 +49,6 @@ export default function OrderPage() {
     });
 
     const { url } = await request.json();
-
     window.location.replace(url);
   }
 
@@ -246,8 +245,8 @@ export default function OrderPage() {
 
   return (
     <>
-      <div className="flex flex-row items-start justify-between">
-        <div className="w-full pr-4">
+      <div className="flex flex-col-reverse md:flex-row items-start justify-between">
+        <div className="w-full pt-8 md:pt-0 md:pr-4">
           <Image src={mattress1} className="w-full mb-2 border-2 rounded-lg" alt="" />
           <p className="text-sm mb-2 text-muted-foreground">Mattress</p>
           <div className="flex flex-row items-center justify-between w-full">
@@ -260,7 +259,7 @@ export default function OrderPage() {
           </div>
           <p className="text-sm mt-2 text-muted-foreground">Frame</p>
         </div>
-        <div className="w-full pl-4">
+        <div className="w-full md:pl-4">
           <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">The Scholar Snooze Package</h2>
           <p className="leading-7 [&:not(:first-child)]:mt-6">Our beds combine the supportive, moldable feel of gel memory foam with innersprings for optimal sleeping comfort.</p>
 
