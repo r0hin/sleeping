@@ -19,6 +19,7 @@ export async function POST(request: Request) {
 
   const session = await client.checkout.sessions.create( {
     mode: "subscription",
+    allow_promotion_codes: true,
     line_items: [{
       price_data: {
         ...customization.payment == "monthly" ? { recurring: { interval: "month" } } : { recurring: { interval: "year" }  },
