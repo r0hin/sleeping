@@ -367,7 +367,7 @@ export default function OrderPage() {
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo - 0.01}/mo)</Button>
-          <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}.</p>
+          <p className="text-sm mt-2 text-muted-foreground">Due today: <span className="line-through font-light">CA${(payment == "annual" ? ((Math.round(1.3 * (totalDelivery + totalYr)) - 0.01)) : (Math.round(1.3 * (totalDelivery + totalMo)) - 0.01))}</span> CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}.</p>
           {/* <p className="text-sm mt-2 text-muted-foreground">Due today: CA${(payment == "annual" ? (totalDelivery + totalYr - 0.01) : (totalDelivery + totalMo - 0.01))}, CA${totalForever - 0.01} across full term.</p> */}
         </div>
       </div>
