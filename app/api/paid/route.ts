@@ -95,6 +95,7 @@ interface StripeEvent {
         term: string,
         payment: string,
         delivery: string,
+        referrer: string,
         totalMo: number,
         totalToday: number,
         totalForever: number,

@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     term: "yr1" | "yr2" | "yr3",
     payment: "annual" | "monthly",
     delivery: "may" | "aug" | "custom",
+    referrer: string,
     date: string
   };
 
@@ -53,6 +54,7 @@ export async function POST(request: Request) {
       term: customization.term,
       payment: customization.payment,
       delivery: customization.delivery,
+      referrer: customization.referrer,
       date: customization.date,
       ...customization.payment == "monthly" ? { totalMo: totals.totalMo } : { totalYr: totals.totalYear },
       totalForever: totals.totalForever,

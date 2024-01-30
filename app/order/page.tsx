@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns"
 import { Calendar } from "@/components/ui/calendar"
+import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar as CalendarIcon } from "lucide-react"
 
@@ -28,6 +29,7 @@ export default function OrderPage() {
   const [term, setTerm] = useState<"yr1" | "yr2" | "yr3">("yr3");
   const [payment, setPayment] = useState<"annual" | "monthly">("annual");
   const [delivery, setDelivery] = useState<"may" | "aug" | "custom">("may");
+  const [referrer, setReferrer] = useState("");
   const [date, setDate] = useState<Date>();
 
   const beginCheckout = async () => {
@@ -41,6 +43,7 @@ export default function OrderPage() {
         term,
         payment,
         delivery,
+        referrer,
         date: date ? date.toISOString() : ""
       }),
       headers: {
@@ -260,8 +263,8 @@ export default function OrderPage() {
           <p className="text-sm mt-2 text-muted-foreground">Frame</p>
         </div>
         <div className="w-full md:pl-4">
-          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">The Scholar Snooze Package</h2>
-          <p className="leading-7 [&:not(:first-child)]:mt-6">Our beds combine the supportive, moldable feel of gel memory foam with innersprings for optimal sleeping comfort.</p>
+          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">Scholar Snooze Package</h2>
+          <p className="leading-7 mt-2">Our beds combine the supportive, moldable feel of gel memory foam with innersprings for optimal sleeping comfort.</p>
 
           <h4 className="scroll-m-20 mb-0 mt-4 text-xl font-semibold tracking-tight">Customize Your Bed</h4>
           <Table>
@@ -364,6 +367,9 @@ export default function OrderPage() {
               </Popover>
             )
           }
+
+          <h4 className="scroll-m-20 mb-2 mt-6 text-md font-medium tracking-tight">How did you hear about us?</h4>
+          <Input onChange={(e) => setReferrer(e.currentTarget.value)} value={referrer} type="email" placeholder="My friend Joe" />
 
           <h4 className="scroll-m-20 mb-2 mt-6 text-xl font-semibold tracking-tight">Review</h4>
           <Button onClick={beginCheckout} disabled={loading} className="w-full mt-2">Checkout (${totalMo - 0.01}/mo)</Button>
