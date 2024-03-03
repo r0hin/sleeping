@@ -34,6 +34,7 @@ export default function OrderPage() {
 
   const beginCheckout = async () => {
     setLoading(true);
+    setPayment("annual");
 
     const request = await fetch("/api/checkout", {
       method: "POST",
@@ -310,7 +311,7 @@ export default function OrderPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Term</TableHead>
-                <TableHead>Payment Frequency</TableHead>
+                {/* <TableHead>Payment Frequency</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -327,7 +328,7 @@ export default function OrderPage() {
                     </SelectContent>
                   </Select>
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Select onValueChange={(val) => { setPayment(val as "annual" | "monthly") }} value={payment}>
                     <SelectTrigger>
                       <SelectValue/>
@@ -337,7 +338,7 @@ export default function OrderPage() {
                       <SelectItem value="annual">Annually (Best value)</SelectItem>
                     </SelectContent>
                   </Select>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableBody>
           </Table>
